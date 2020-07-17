@@ -1,0 +1,78 @@
+/.metadata
+.lock
+repositories.xml.zip
+history.version
+properties.index
+properties.version
+1.tree
+org.eclipse.core.resources
+org.eclipse.core.resources.prefs
+org.eclipse.jdt.ui.prefs
+org.eclipse.jst.j2ee.webservice.ui.prefs
+org.eclipse.mylyn.context.core.prefs
+org.eclipse.mylyn.monitor.ui.prefs
+org.eclipse.team.cvs.ui.prefs
+org.eclipse.team.ui.prefs
+org.eclipse.ui.ide.prefs
+org.eclipse.ui.prefs
+org.eclipse.ui.workbench.prefs
+workbench.xmi
+invalidArchivesCache
+nonChainingJarsCache
+variablesAndContainers.dat
+OpenTypeHistory.xml
+QualifiedTypeNameHistory.xml
+dialog_settings.xml
+dialog_settings.xml
+dialog_settings.xml
+version.ini
+bin
+*.ser.xml
+Thumbs.db
+/PushEm/settings.properties
+/Vorstellung.pdf
+/settings.properties
+/.project
+/.classpath
+
+# IntelliJ
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+
+*.iml
+
+## Directory-based project format:
+.idea/
+# if you remove the above rule, at least ignore the following:
+
+# User-specific stuff:
+# .idea/workspace.xml
+# .idea/tasks.xml
+# .idea/dictionaries
+
+# Sensitive or high-churn files:
+# .idea/dataSources.ids
+# .idea/dataSources.xml
+# .idea/sqlDataSources.xml
+# .idea/dynamic.xml
+# .idea/uiDesigner.xml
+
+# Gradle:
+# .idea/gradle.xml
+# .idea/libraries
+
+## File-based project format:
+*.ipr
+*.iws
+
+/out/
+/doc
+*.log
+/.settings
+*.jar
+src/extrenaltestbots/*
+*.xcf
+*_Original.png
+
+.gradle
+build
+gradle/

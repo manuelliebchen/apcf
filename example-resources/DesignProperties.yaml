@@ -1,0 +1,31 @@
+standartFont:
+   file: "breathe_fire.otf"
+   size: 32
+
+titleFont:
+   file: "breathe_fire.otf"
+   size: 72
+
+subtitleFont:
+   file: "breathe_fire.otf"
+   size: 42
+
+mediumSmallFont:
+   file: "breathe_fire.otf"
+   size: 24
+   
+smallFont:
+   file: "breathe_fire.otf"
+   size: 16
+
+# http://paletton.com/#uid=70X1q0kpntDfEF8kMvZtppdvJk0
+
+foregroundColor: "#FFFFFF"
+backgroundColor: "#000000"
+
+buttonFont:
+   file: "breathe_fire.otf"
+   size: 32
+buttonTextColor: "#000000"
+buttonHeight: 70
+   
