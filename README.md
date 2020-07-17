@@ -21,5 +21,5 @@ Game
 Thank for some parts of the code base to the [Acagamics e.V.](https://acagamics.de/) and particularly:
  - Jan-Cord Gerken
  - Claudius Grimm
- - Gerd Schmidt
+ - (Gerd Schmidt)[https://github.com/Herb1]
  - Max Klockmann
