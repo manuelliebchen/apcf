@@ -19,7 +19,7 @@ Game
 
 # Acknowledgement
 Thank for some parts of the code base to the [Acagamics e.V.](https://acagamics.de/) and particularly:
- - Jan-Cord Gerken
+ - [Jan-Cord Gerken](https://github.com/gnaarf)
  - Claudius Grimm
  - [Gerd Schmidt](https://github.com/Herb1)
- - Max Klockmann
+ - [Max Klockmann](https://github.com/maxklock)
