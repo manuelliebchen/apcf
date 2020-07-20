@@ -1,6 +1,7 @@
 package de.acagamics.framework.ui.interfaces;
 
 import de.acagamics.framework.ui.StateManager;
+import de.acagamics.framework.ui.elements.Background;
 import de.acagamics.framework.ui.elements.RenderingLayer;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
@@ -20,6 +21,8 @@ public abstract class UIState implements EventHandler<InputEvent> {
 	protected List<IClickable> clickable;
 	protected RenderingLayer drawables;
 
+	protected IDrawable background;
+
 	/**
 	 * Initial state has to have this constructor.
 	 * @param manager
@@ -30,6 +33,7 @@ public abstract class UIState implements EventHandler<InputEvent> {
 		this.context = context;
 		drawables = new RenderingLayer();
 		clickable = new ArrayList<>();
+		background = new Background();
 	}
 	
     
@@ -53,6 +57,7 @@ public abstract class UIState implements EventHandler<InputEvent> {
     }
 
 	public void redraw() {
+		background.draw(context);
 		drawables.draw(context);
 		for (IClickable clickableElement : clickable) {
 			clickableElement.draw(context);
