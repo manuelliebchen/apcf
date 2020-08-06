@@ -144,8 +144,9 @@ public final class Button extends UIElement implements IClickable {
 	 * @see isPressed()
 	 * @param enabled wether this button is enabled
 	 */
-	public void setEnabled(boolean enabled) {
+	public Button setEnabled(boolean enabled) {
 		this.isEnabled = enabled;
+		return this;
 	}
 
 	/**
@@ -170,6 +171,8 @@ public final class Button extends UIElement implements IClickable {
 		Color main = propeties.getForegroundColor();
 		Color second = propeties.getSecondaryColor();
 		if (!this.isEnabled) {
+			main = propeties.getInactiveColor();
+			second = propeties.getInactiveSecondColor();
 		} else if (isOver) {
 			main = propeties.getSecondaryColor();
 			second = propeties.getForegroundColor();

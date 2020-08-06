@@ -50,6 +50,18 @@ public final class DesignProperties {
 	public Color getSecondaryColor() {
 		return Color.web(secondaryColor);
 	}
+
+	private String inactiveColor;
+
+	public Color getInactiveColor() {
+		return Color.web(inactiveColor);
+	}
+
+	private String inactiveSecondColor;
+
+	public Color getInactiveSecondColor() {
+		return Color.web(inactiveSecondColor);
+	}
 	
 	private String backgroundColor;
 	

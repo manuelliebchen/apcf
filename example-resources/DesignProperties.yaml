@@ -22,6 +22,9 @@ foregroundColor: "#ff8000"
 secondaryColor: "#ca701b"
 backgroundColor: "#1d809f"
 
+inactiveColor: "#808080"
+inactiveSecondColor: "#404040"
+
 buttonFont:
    file: "DejaVuSans.ttf"
    size: 32
