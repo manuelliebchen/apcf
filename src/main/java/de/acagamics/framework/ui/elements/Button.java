@@ -93,8 +93,8 @@ public final class Button extends UIElement implements IClickable {
 		this.box = new Box2f(this.alignment.getRelativPosition(), size);
 
 		accessorys = new ArrayList<>();
-		accessorys.add( new Texture(new Vec2f(-0.25f, 1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.25f, false));
-		accessorys.add( new Texture(new Vec2f( 0.25f,  1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.25f, true));
+		accessorys.add( new Texture(new Vec2f(-0.25f, 1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.5f, false));
+		accessorys.add( new Texture(new Vec2f( 0.25f,  1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.5f, true));
 
 		depth = 8;
 	}
