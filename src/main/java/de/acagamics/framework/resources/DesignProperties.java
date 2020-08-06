@@ -38,11 +38,17 @@ public final class DesignProperties {
 	public Font getSmallFont() {
 		return smallFont.getFont();
 	}
-	
+
 	private String foregroundColor;
 	
 	public Color getForegroundColor() {
 		return Color.web(foregroundColor);
+	}
+
+	private String secondaryColor;
+
+	public Color getSecondaryColor() {
+		return Color.web(secondaryColor);
 	}
 	
 	private String backgroundColor;

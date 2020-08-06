@@ -15,6 +15,9 @@ import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Image buttons with customs images and text. Registers if a user pressed on
  * it.
@@ -46,9 +49,13 @@ public final class Button extends UIElement implements IClickable {
 	private Vec2f size;
 	private Alignment alignment;
 
+	private int depth;
+
 	private Image imgUp;
 	private Image imgDown;
 	private Image imgInActive;
+
+	private List<Texture> accessorys;
 
 	private KeyCode keycode;
 
@@ -84,6 +91,12 @@ public final class Button extends UIElement implements IClickable {
 
 		calcButtonTextProperties();
 		this.box = new Box2f(this.alignment.getRelativPosition(), size);
+
+		accessorys = new ArrayList<>();
+		accessorys.add( new Texture(new Vec2f(-0.25f, 1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.25f, false));
+		accessorys.add( new Texture(new Vec2f( 0.25f,  1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.25f, true));
+
+		depth = 8;
 	}
 
 	public Button setTextColor(Color textColor) {
@@ -152,30 +165,33 @@ public final class Button extends UIElement implements IClickable {
 	 */
 	public void draw(GraphicsContext context) {
 		Vec2f position = alignment.getAlignedPosition(context);
-
-		Image image;
-		if (!this.isEnabled) {
-			image = imgInActive;
-		} else if (isOver) {
-			image = imgDown;
-		} else {
-			image = imgUp;
-		}
-		context.drawImage(image, position.getX(), position.getY(), size.getX(), size.getY());
-
 		DesignProperties propeties = ResourceManager.getInstance().loadProperties(DesignProperties.class);
+
+		Color main = propeties.getForegroundColor();
+		Color second = propeties.getSecondaryColor();
+		if (!this.isEnabled) {
+		} else if (isOver) {
+			main = propeties.getSecondaryColor();
+			second = propeties.getForegroundColor();
+		}
+
+		context.setFill(second);
+		float x = position.getX();
+		float y = position.getY();
+		float s_x = size.getX();
+		float s_y = size.getY();
+		context.fillPolygon(new double[]{x, x + s_x - depth, x + s_x, x + s_x, x + depth, x}, new double[]{ y , y , y + depth, y + s_y, y + s_y, y + s_y - depth}, 6);
+		context.setFill(main);
+		context.fillRect(position.getX(), position.getY(), size.getX() - depth, size.getY() - depth);
+
 		context.setFont(propeties.getButtonFont());
 		context.setFill(textColor);
 		context.fillText(buttonText, position.getX() + centeredPositioOffset.getX(),
 				position.getY() + centeredPositioOffset.getY());
 
-		context.drawImage(ResourceManager.getInstance().loadImage("Ressource.png"),
-				position.getX() + propeties.getButtonHeight() * 1 / 2.0, position.getY() + size.getY() * 1 / 5,
-				-propeties.getButtonHeight(), propeties.getButtonHeight());
-		context.drawImage(ResourceManager.getInstance().loadImage("Ressource.png"),
-				position.getX() + size.getX() - propeties.getButtonHeight() / 2.0, position.getY() + size.getY() * 1 / 5,
-				propeties.getButtonHeight(), propeties.getButtonHeight());
-
+		for(Texture t : accessorys){
+			t.draw(context, position.add(t.isFlip() ? new Vec2f(size.getX(), 0) : new Vec2f()));
+		}
 	}
 
 	/**

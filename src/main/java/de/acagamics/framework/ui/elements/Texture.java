@@ -26,4 +26,8 @@ public class Texture {
                 2 * box.getHeight() );
     }
 
+    public boolean isFlip(){
+        return flip;
+    }
+
 }
