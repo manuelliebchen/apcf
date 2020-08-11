@@ -96,7 +96,7 @@ public final class Button extends UIElement implements IClickable {
 		accessorys.add( new Texture(new Vec2f(-0.25f, 1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.5f, false));
 		accessorys.add( new Texture(new Vec2f( 0.25f,  1.25f),"Ressource.png", ResourceManager.getInstance().loadProperties(DesignProperties.class).getButtonHeight() * 0.5f, true));
 
-		depth = 8;
+		depth = 4;
 	}
 
 	public Button setTextColor(Color textColor) {
@@ -171,15 +171,13 @@ public final class Button extends UIElement implements IClickable {
 		Color main = propeties.getForegroundColor();
 		Color second = propeties.getSecondaryColor();
 
-		float d_half = depth/2.0f;
 		float factor = 0;
-
 		if (isOver) {
-			factor = depth;
+			factor = 2 * depth;
 			context.setFill(second);
-			context.fillRect(position.getX() + d_half, position.getY()+ d_half, size.getX() - depth, size.getY() - depth);
+			context.fillRect(position.getX() + depth, position.getY()+ depth, size.getX() - depth, size.getY() - depth);
 			context.setFill(main);
-			context.fillRect(position.getX() + depth+ d_half, position.getY()+ depth+ d_half, size.getX() - 2 * depth, size.getY() - 2 * depth);
+			context.fillRect(position.getX() + 3 * depth, position.getY()+  3 * depth, size.getX() - 3 * depth, size.getY() - 3 * depth);
 		} else {
 			if (!this.isEnabled) {
 				main = propeties.getInactiveColor();
@@ -192,19 +190,19 @@ public final class Button extends UIElement implements IClickable {
 			float h = size.getY();
 
 			context.setFill(second);
-			context.fillPolygon(new double[]{x, x + w - depth, x + w - d_half, x + w - d_half, x + d_half, x}, new double[]{y, y, y + d_half, y + h - d_half, y + h - d_half, y + h - depth}, 6);
+			context.fillPolygon(new double[]{x, x + w - depth, x + w, x + w, x+ depth, x}, new double[]{y, y, y + depth, y + h, y + h, y + h - depth}, 6);
 			context.setFill(main);
 			context.fillRect(position.getX(), position.getY(), size.getX() - depth, size.getY() - depth);
 		}
 
 		context.setFont(propeties.getButtonFont());
 		context.setFill(textColor);
-		context.fillText(buttonText, position.getX() + centeredPositioOffset.getX()-d_half + factor,
-				position.getY() + centeredPositioOffset.getY() - d_half + factor);
+		context.fillText(buttonText, position.getX() + centeredPositioOffset.getX() + factor,
+				position.getY() + centeredPositioOffset.getY() + factor);
 
 
 		for(Texture t : accessorys){
-			t.draw(context, position.add(new Vec2f(factor-d_half,factor-d_half)).add(t.isFlip() ? new Vec2f(size.getX(), 0) : new Vec2f()));
+			t.draw(context, position.add(t.isFlip() ? new Vec2f(size.getX(), 0) : new Vec2f()));
 		}
 	}
 
