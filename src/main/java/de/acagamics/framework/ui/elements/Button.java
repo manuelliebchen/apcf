@@ -170,30 +170,41 @@ public final class Button extends UIElement implements IClickable {
 
 		Color main = propeties.getForegroundColor();
 		Color second = propeties.getSecondaryColor();
-		if (!this.isEnabled) {
-			main = propeties.getInactiveColor();
-			second = propeties.getInactiveSecondColor();
-		} else if (isOver) {
-			main = propeties.getSecondaryColor();
-			second = propeties.getForegroundColor();
-		}
 
-		context.setFill(second);
-		float x = position.getX();
-		float y = position.getY();
-		float s_x = size.getX();
-		float s_y = size.getY();
-		context.fillPolygon(new double[]{x, x + s_x - depth, x + s_x, x + s_x, x + depth, x}, new double[]{ y , y , y + depth, y + s_y, y + s_y, y + s_y - depth}, 6);
-		context.setFill(main);
-		context.fillRect(position.getX(), position.getY(), size.getX() - depth, size.getY() - depth);
+		float d_half = depth/2.0f;
+		float factor = 0;
+
+		if (isOver) {
+			factor = depth;
+			context.setFill(second);
+			context.fillRect(position.getX() + d_half, position.getY()+ d_half, size.getX() - depth, size.getY() - depth);
+			context.setFill(main);
+			context.fillRect(position.getX() + depth+ d_half, position.getY()+ depth+ d_half, size.getX() - 2 * depth, size.getY() - 2 * depth);
+		} else {
+			if (!this.isEnabled) {
+				main = propeties.getInactiveColor();
+				second = propeties.getInactiveSecondColor();
+			}
+
+			float x = position.getX();
+			float y = position.getY();
+			float w = size.getX();
+			float h = size.getY();
+
+			context.setFill(second);
+			context.fillPolygon(new double[]{x, x + w - depth, x + w - d_half, x + w - d_half, x + d_half, x}, new double[]{y, y, y + d_half, y + h - d_half, y + h - d_half, y + h - depth}, 6);
+			context.setFill(main);
+			context.fillRect(position.getX(), position.getY(), size.getX() - depth, size.getY() - depth);
+		}
 
 		context.setFont(propeties.getButtonFont());
 		context.setFill(textColor);
-		context.fillText(buttonText, position.getX() + centeredPositioOffset.getX(),
-				position.getY() + centeredPositioOffset.getY());
+		context.fillText(buttonText, position.getX() + centeredPositioOffset.getX()-d_half + factor,
+				position.getY() + centeredPositioOffset.getY() - d_half + factor);
+
 
 		for(Texture t : accessorys){
-			t.draw(context, position.add(t.isFlip() ? new Vec2f(size.getX(), 0) : new Vec2f()));
+			t.draw(context, position.add(new Vec2f(factor-d_half,factor-d_half)).add(t.isFlip() ? new Vec2f(size.getX(), 0) : new Vec2f()));
 		}
 	}
 
