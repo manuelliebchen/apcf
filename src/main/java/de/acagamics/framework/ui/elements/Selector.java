@@ -72,8 +72,8 @@ public class Selector<T> implements IClickable {
 		return this;
 	}
 
-	public int getValue() {
-		return value;
+	public T getValue() {
+		return elements.get(value);
 	}
 
 	@Override
